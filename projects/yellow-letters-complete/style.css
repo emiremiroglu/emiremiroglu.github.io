@@ -1,10 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@800&family=Montserrat:wght@600&family=Quicksand:wght@500&display=swap');
 
-/* * { background-color: rgba(200, 200, 200, 0.2); } */
-
 * {
   padding: 0;
   margin: 0;
+  /* background-color: rgba(200, 200, 200, 0.2); */
 }
 
 :root {
@@ -12,8 +11,6 @@
   --color-navy: #151827;
   --shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 }
-
-/* * { border: 1px solid rgba(0, 0, 0, 0.2); } */
 
 body {
   font-family: 'Quicksand', sans-serif;
@@ -63,8 +60,9 @@ header.scrolled {
 header .container {
   display: flex;
   justify-content: space-between;
+  gap: 20px;
   align-items: center;
-  padding: 20px 30px;
+  padding: 20px 20px;
   box-sizing: border-box;
 }
 
@@ -80,6 +78,8 @@ header nav a {
   text-decoration: none;
   text-transform: uppercase;
   color: #dfdfdf;
+  font-size: 0.9em;
+  letter-spacing: 1px;
 }
 
 header nav a:hover {
@@ -144,15 +144,12 @@ section.hero {
   clip-path: polygon(0 5%, 100% 0%, 100% 95%, 0 100%);
 }
 
-.hero .container .col .content {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 20px;
-}
-
 .reverse {
   text-align: right;
+}
+
+.reveal {
+  visibility: hidden;
 }
 
 .wrap {
@@ -221,7 +218,16 @@ section.hero {
   font-size: 0.8em;
   letter-spacing: 1px;
   text-decoration: none;
+}
 
+.button:hover {
+  cursor: pointer;
+  transition: scale ease-in-out 0.1s;
+  scale: 1.05;
+}
+
+.button span {
+  white-space: nowrap;
 }
 
 .button.secondary {
@@ -343,12 +349,18 @@ footer .logo {
   min-height: 600px;
   position: relative;
   overflow: hidden;
+  border: 1px solid red;
+  box-sizing: border-box;
 }
 
 .slide {
   width: 100%;
   position: absolute;
   transition: all 0.5s;
+}
+
+.slide .slide_inner {
+  padding: 20px;
 }
 
 .btn {
@@ -364,6 +376,14 @@ footer .logo {
   width: 100%;
 }
 
+svg.icon {
+  height: 24px;
+}
+
+@media screen and (min-width: 1200px) {
+  
+}
+
 @media screen and (max-width: 768px) {
   header nav { display: none; }
   header .buttons { display: none; }
@@ -373,6 +393,9 @@ footer .logo {
   h3 { font-size: 20px; }
 
   .grid { flex-direction: column; }
+  .grid .col {
+    width: 100%;
+  }
 }
 
 
