@@ -1,15 +1,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@800&family=Montserrat:wght@600&family=Quicksand:wght@500&display=swap');
 
 * {
-  padding: 0;
   margin: 0;
-  /* background-color: rgba(200, 200, 200, 0.2); */
+  /* background: rgba(200, 200, 200, 0.05); */
+  box-sizing: border-box;
 }
 
 :root {
   --border-radius: 20px;
   --color-navy: #151827;
   --shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  --padding: 20px;
 }
 
 body {
@@ -46,6 +47,7 @@ header {
   width: 100%;
   z-index: 99;
   top: 0;
+  padding: 20px 30px;
 }
 
 header.scrolled {
@@ -53,17 +55,32 @@ header.scrolled {
   box-shadow: rgba(0, 0, 0, 0.3) 0px 8px 24px;
 }
 
+header .container {
+  display: flex;
+  justify-content: space-between;
+}
+
+
+
 .logo {
   height: 50px;
 }
 
-header .container {
+.flex {
   display: flex;
+}
+
+.spaced {
   justify-content: space-between;
+}
+
+.gap {
   gap: 20px;
-  align-items: center;
-  padding: 20px 20px;
-  box-sizing: border-box;
+}
+
+.py {
+  padding-top: var(--padding);
+  padding-bottom: var(--padding);
 }
 
 header nav {
@@ -104,12 +121,13 @@ main {
 section {
   display: flex;
   align-items: center;
+  flex-direction: column;
   min-height: 60vh;
   padding: 200px 30px;
 }
 
 section:not(:first-child) {
-  margin-top: -110px;
+  
 }
 
 .wrap {
@@ -135,13 +153,12 @@ section.hero {
   justify-content: center;
   background-color: #151827;
   color: white;
-  -webkit-clip-path: polygon(0 0%, 100% 0%, 100% 95%, 0 100%);
-  clip-path: polygon(0 0%, 100% 0%, 100% 95%, 0 100%);
 }
 
 .skew {
-  -webkit-clip-path: polygon(0 5%, 100% 0%, 100% 95%, 0 100%);
-  clip-path: polygon(0 5%, 100% 0%, 100% 95%, 0 100%);
+  margin-top: -100px;
+  -webkit-clip-path: polygon(0 3%, 100% 0%, 100% 100%, 0 100%);
+  clip-path: polygon(0 3%, 100% 0%, 100% 100%, 0 100%);
 }
 
 .reverse {
@@ -156,10 +173,9 @@ section.hero {
   max-width: 700px;
 }
 
-
-
 .hero .video {
   aspect-ratio: 4/3;
+  width: 100%;
   height: auto;
   background: url('./images/bdfb83c543eaeb979a58c66ce1bb6787.png') no-repeat center center;
   background-size: cover;
@@ -222,8 +238,6 @@ section.hero {
 
 .button:hover {
   cursor: pointer;
-  transition: scale ease-in-out 0.1s;
-  scale: 1.05;
 }
 
 .button span {
@@ -241,18 +255,34 @@ section.hero {
 
 .grid {
   display: flex;
-  align-items: flex-start;
   gap: 40px;
+}
+
+.reverse {
+  flex-direction: row-reverse;
 }
 
 .grid .col {
   flex: 1;
-  flex-basis: 0;
+  display: flex;
+}
+
+.grid .col.center {
+  align-items: center;
 }
 
 .flex {
   display: flex;
   gap: 20px;
+}
+
+.relative {
+  position: relative;
+}
+
+.swirl {
+  position: absolute;
+  bottom: 0;
 }
 
 .card {
@@ -262,8 +292,29 @@ section.hero {
   gap: 20px;
   padding: 30px;
   background-color: white;
-  box-shadow: var(--shadow);
-  border-radius: var(--border-radius);
+  border-radius: 30px;
+
+  border-top-left-radius: 255px 15px;
+  border-top-right-radius: 15px 225px;
+  border-bottom-right-radius: 225px 15px;
+  border-bottom-left-radius:15px 255px;
+
+  border: solid 3px #41403E;
+
+  aspect-ratio: 9/11;
+
+}
+
+
+
+button {
+  border: none;
+}
+
+.slider {
+  display: flex;
+  gap: 30px;
+  overflow: hidden;
 }
 
 .sep {
@@ -289,7 +340,7 @@ section.hero {
 }
 
 .mt {
-  margin-top: 30px;
+  margin-top: 20px;
 }
 
 footer {
@@ -338,40 +389,6 @@ footer .logo {
   margin-bottom: 20px;
 }
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-.slider {
-  width: 100%;
-  min-height: 600px;
-  position: relative;
-  overflow: hidden;
-  border: 1px solid red;
-  box-sizing: border-box;
-}
-
-.slide {
-  width: 100%;
-  position: absolute;
-  transition: all 0.5s;
-}
-
-.slide .slide_inner {
-  padding: 20px;
-}
-
-.btn {
-  cursor: pointer;
-  background: none;
-  border: none;
-}
-.btn:active {
-  transform: scale(1.1);
-}
-
 .full {
   width: 100%;
 }
@@ -380,18 +397,16 @@ svg.icon {
   height: 24px;
 }
 
-@media screen and (min-width: 1200px) {
-  
-}
-
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1200px) {
   header nav { display: none; }
   header .buttons { display: none; }
   header .toggle { display: inline-block; }
   h1 { font-size: 44px; }
   h2 { font-size: 36px; }
   h3 { font-size: 20px; }
+}
 
+@media screen and (max-width: 768px) {
   .grid { flex-direction: column; }
   .grid .col {
     width: 100%;
