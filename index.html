@@ -10,24 +10,27 @@
     .hero {
       background: url('./abstract.jpg') no-repeat center center;
       background-size: cover;
+      animation: animate 30s infinite;
     }
   </style>
 </head>
 
 <body class="text-zinc-800 bg-zinc-100 dark:text-zinc-200 dark:bg-zinc-900">
-  <header class="fixed top-0 right-0 left-0 py-10">
+  <header class="fixed top-0 right-0 left-0 p-10">
     <div class="container mx-auto">
-      <strong>Remote Developer_</strong>
+      <div class="flex items-center justify-between">
+        <strong>Remote Developer_</strong>
+        <a class="font-bold bg-indigo-600 py-4 px-6 rounded-lg hover:bg-indigo-500" href="/get-in-touch">Get in Touch</a>
+      </div>
     </div>
   </header>
   <main>
-    <section class="flex items-center justify-center h-screen">
-      <div class="flex flex-col">
-        <h1 class="uppercase tracking-widest">Web Design and Development</h1>
-        <strong class="text-6xl">Crafting Web Solutions</strong>
+    <section class="flex items-center justify-center h-screen hero">
+      <div class="flex flex-col max-w-[800px] px-10">
+        <h1 class="text-indigo-500 uppercase tracking-widest">Web Design and Development</h1>
+        <strong class="text-6xl ">Crafting custom client-centric web applications</strong>
       </div>
     </section>
   </main>
 </body>
-
 </html>
