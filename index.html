@@ -6,29 +6,28 @@
   <title>Remote Developer_</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-      tailwind.config = {
-        theme: {
-          extend: {
-            colors: {
-              primary: "#4f46e5",
-            },
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: "#4f46e5",
           },
         },
-      }
-    </script>
+      },
+    }
+  </script>
   <style>
     .hero {
       background: url('./abstract.jpg') no-repeat center center;
       background-size: cover;
-      animation: animate 30s infinite;
     }
   </style>
 </head>
 
 <body class=" text-zinc-200 bg-zinc-900">
-  <header class="fixed top-0 right-0 left-0 p-10">
-    <div class="container mx-auto">
+  <header class="fixed top-0 right-0 left-0">
+    <div class="container mx-auto p-10">
       <div class="flex items-center justify-between">
         <strong>Remote Developer<span class="text-primary">_</span></strong>
         <a class="font-bold bg-primary py-3 px-5 rounded-lg hover:bg-primary" href="/get-in-touch">Get in Touch</a>
@@ -42,6 +41,30 @@
         <strong class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl">Crafting custom client-centric web applications</strong>
       </div>
     </section>
+    <!-- <section class="flex items-center justify-center h-screen">
+      <div class="container mx-auto px-10 flex flex-col gap-20">
+        <div class="grid grid-cols-4">
+
+          <div>
+            <div class="flex items-center gap-2">
+              <svg class="w-8 h-8 text-primary" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 7.125C2.25 6.504 2.754 6 3.375 6h6c.621 0 1.125.504 1.125 1.125v3.75c0 .621-.504 1.125-1.125 1.125h-6a1.125 1.125 0 01-1.125-1.125v-3.75zM14.25 8.625c0-.621.504-1.125 1.125-1.125h5.25c.621 0 1.125.504 1.125 1.125v8.25c0 .621-.504 1.125-1.125 1.125h-5.25a1.125 1.125 0 01-1.125-1.125v-8.25zM3.75 16.125c0-.621.504-1.125 1.125-1.125h5.25c.621 0 1.125.504 1.125 1.125v2.25c0 .621-.504 1.125-1.125 1.125h-5.25a1.125 1.125 0 01-1.125-1.125v-2.25z" />
+              </svg>
+              <h3 class="font-bold text-xl">UI Design</h3>
+            </div>
+          </div>
+
+          <div>
+            <div class="flex items-center gap-2">
+              <svg class="w-8 h-8 text-primary" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M14.25 9.75L16.5 12l-2.25 2.25m-4.5 0L7.5 12l2.25-2.25M6 20.25h12A2.25 2.25 0 0020.25 18V6A2.25 2.25 0 0018 3.75H6A2.25 2.25 0 003.75 6v12A2.25 2.25 0 006 20.25z" />
+              </svg>
+              <h3 class="font-bold text-xl">Web Development</h3>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section> -->
   </main>
 </body>
 </html>
