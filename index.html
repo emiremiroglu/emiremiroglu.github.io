@@ -6,6 +6,17 @@
   <title>Remote Developer_</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: "#4f46e5",
+            },
+          },
+        },
+      }
+    </script>
   <style>
     .hero {
       background: url('./abstract.jpg') no-repeat center center;
@@ -15,20 +26,20 @@
   </style>
 </head>
 
-<body class="text-zinc-800 bg-zinc-100 dark:text-zinc-200 dark:bg-zinc-900">
+<body class=" text-zinc-200 bg-zinc-900">
   <header class="fixed top-0 right-0 left-0 p-10">
     <div class="container mx-auto">
       <div class="flex items-center justify-between">
-        <strong>Remote Developer_</strong>
-        <a class="font-bold bg-indigo-600 py-4 px-6 rounded-lg hover:bg-indigo-500" href="/get-in-touch">Get in Touch</a>
+        <strong>Remote Developer<span class="text-primary">_</span></strong>
+        <a class="font-bold bg-primary py-3 px-5 rounded-lg hover:bg-primary" href="/get-in-touch">Get in Touch</a>
       </div>
     </div>
   </header>
   <main>
     <section class="flex items-center justify-center h-screen hero">
       <div class="flex flex-col max-w-[800px] px-10">
-        <h1 class="text-indigo-500 uppercase tracking-widest">Web Design and Development</h1>
-        <strong class="text-6xl ">Crafting custom client-centric web applications</strong>
+        <h1 class="text-primary uppercase tracking-widest">Web Design and Development</h1>
+        <strong class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl">Crafting custom client-centric web applications</strong>
       </div>
     </section>
   </main>
