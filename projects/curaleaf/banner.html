@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js" defer></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+  <title>Curaleaf</title>
+  <style>
+    
+    :root {
+      --color-primary: #264D59;
+      --color-background: #F4F1EB;
+      --swiper-theme-color: var(--color-primary);
+    }
+
+    @font-face {
+        font-family: 'Gazpacho';
+        src: url('./assets/gazpacho_black-webfont.woff2') format('woff2'),
+            url('./assets/gazpacho_black-webfont.woff') format('woff');
+        font-weight: normal;
+        font-style: normal;
+    }
+
+    * {
+      margin: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: sans-serif;
+      color: var(--color-primary);
+    }
+
+    main {
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+    }
+
+    .icon {
+      width: 20px;
+      height: auto;
+    }
+
+    .swiper {
+      flex-grow: 1;
+      flex-basis: 0;
+    }
+
+    .swiper-slide {
+      background: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .swiper-button-next,
+    .swiper-button-prev {
+      background-color: var(--color-background);
+      padding: 10px 0;
+      border-radius: 6px;
+    }
+
+    .swiper-button-next::after,
+    .swiper-button-prev::after {
+      font-size: 1.2em;
+    }
+
+    .product {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .product .content {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      padding: 0 30px;
+    }
+
+    .product img {
+      width: 100%;
+      max-width: 200px;
+    }
+
+    .ad {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 10px;
+      background-color: var(--color-background);
+      background-repeat: no-repeat;
+      background-size: cover;
+      
+      flex-grow: 1;
+      flex-basis: 0;
+    }
+
+    .ad .title {
+      font-family: 'Gazpacho', sans-serif;
+      font-weight: bold;
+      letter-spacing: -1px;
+      line-height: 100%;
+      font-size: 50px;
+      max-width: 320px;
+      text-transform: uppercase;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .ad .license {
+      font-size: 0.6em;
+      text-align: center;
+      font-family: monospace;
+      order: 3;
+    }
+
+    .az {
+      background-image: url('./assets/bg-arizona.png');
+    }
+
+    .nj {
+      background-image: url('./assets/bg-new-jersey.png');
+    }
+
+    .fl {
+      background-image: url('./assets/bg-florida.png');
+    }
+
+    .location {
+      font-size: 1em;
+    }
+
+    small {
+      font-family: monospace;
+      font-size: 1.1em;
+    }
+
+    button {
+      border: none;
+      border-radius: 6px;
+      background-color: var(--color-primary);
+      color: var(--color-background);
+      padding: 10px 20px;
+      font-size: 0.9em;
+      align-self: self-start;
+    }
+
+    @media only screen and (max-width: 728px) {
+      
+      main {
+        display: block;
+      }
+
+      .carousel {
+        height: 70%;
+      }
+
+      .ad {
+        height: 30%;
+      }
+
+      .logo {
+        width: 100px;
+        z-index: 999;
+        position: absolute;
+        top: 20px;
+      }
+
+      .product {
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+      }
+
+      .product button {
+        align-self: center;
+      }
+
+      .product img {
+        width: 200px;
+      }
+
+      .ad .title {
+        font-size: 40px;
+        order: 1;
+      }
+    }
+
+  </style>
+</head>
+<body>
+  <main>
+    <section class="swiper carousel">
+      <div class="swiper-wrapper">
+      </div>
+      <div class="swiper-button-next"></div>
+      <div class="swiper-button-prev"></div>
+    </section>
+    <section class="ad az">
+      <img class="logo" src="./assets/logo.svg">
+      <span class="title">A New Kind of High</span>
+      <div class="location">
+        <img src="./assets/marker.svg">
+        Phoenix, AZ
+      </div>
+      <span class="license">
+        Devine Desert Healing Inc. A/U: 00000026ESRZ99769978
+      </span>
+    </section>
+  </main>
+  <script>
+    (function () {
+      fetch('https://docs.google.com/spreadsheets/d/1ZTF-UJtDChbjxbwlpBAhXLRo0NrVotxQvcvzoeYSd8Q/gviz/tq?tqx=reqId:1;out:csv').then((response) => {
+        if(response.ok) {
+          return response.text();
+        }
+        throw new Error('Something went wrong');
+      })
+      .then((response) => {
+        let parent = document.querySelector('.swiper-wrapper')
+        let results = Papa.parse(response, { header: true });
+        let products = results.data
+
+        for(p in products) {
+          let name = products[p]['product-name']
+          let src = products[p]['images']
+          let price = products[p]['price']
+
+          let slide = document.createElement('div')
+              slide.className = 'swiper-slide'
+              slide.innerHTML = `
+                <div class="product">
+                  <img src="${src}">
+                  <div class="content">
+                    <strong>${name}</strong>
+                    <small>${price}</small>
+                    <button>Shop Now</button>
+                  </div>
+                </div>
+              `
+          parent.appendChild(slide)
+        }
+
+        let swiper = new Swiper(".carousel", {
+          navigation: {
+            nextEl: ".swiper-button-next",
+            prevEl: ".swiper-button-prev",
+          },
+        });
+
+      })
+      .catch((error) => {
+        console.log(error)
+      });
+    })();
+  </script>
+</body>
+</html>
