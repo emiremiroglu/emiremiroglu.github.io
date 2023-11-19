@@ -3,51 +3,25 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Curaleaf Preview</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://unpkg.com/@tailwindcss/forms@0.2.1/dist/forms.min.css" rel="stylesheet">
+  <title>Curaleaf</title>
   <style>
-    * {
-      margin: 0;
-    }
-
-    body {
-      font-size: 1em;
-      font-family: sans-serif;
-      background-color: #fafafa;
-      padding-top: 200px;
-    }
-
-    .container {
-      max-width: 970px;
-      margin: auto auto;
-    }
-
-    .grid {
-      display: flex;
-      gap: 30px;
-    }
-
-    .grid.uneven div:first-child {
-      flex: 1;
-    }
-
-    .grid.uneven div:last-child {
-      flex: 0;
-    }
-
     p {
-      margin-bottom: 30px;
+      margin-bottom: 20px !important;
       line-height: 160%;
     }
 
     code {
-      display: block;
-      color: #909090;
+      display: inline-block;
       margin-bottom: 5px;
+      font-size: 0.6em;
     }
 
     iframe {
-      border: 1px solid #dfdfdf;
-      margin-bottom: 30px;
+      border: 1px solid #DFDFDF;
+      border-radius: 3px;
+      margin-top: 30px;
       resize: both;
       user-select:none;
       -moz-user-select: none;
@@ -56,56 +30,130 @@
     }
   </style>
 </head>
-<body>
-  <main class="container">
-    <section>
-      <code>Demo Area 970x250</code>
-      <iframe src="./banner.html?state=NJ&gid=1942770882" width="970" height="250"></iframe>
-      
-      <code>Demo Area 970x90</code>
-      <iframe src="./banner.html?state=NJ&gid=1942770882" width="970" height="90"></iframe>
-      
-      <code>Demo Area 728x90</code>
-      <iframe src="./banner.html?state=NJ&gid=1942770882" width="728" height="90"></iframe>
-    </section>
-    <section class="grid uneven">
+<body class="py-32">
+  <header class="fixed top-0 left-0 right-0 py-5 w-full bg-gray-50">
+    <section class="flex justify-between items-center max-w-[970px] mx-auto">
+      <strong>
+        Curaleaf Ad Preview
+      </strong>
+      <div class="flex items-center gap-3">
+        <strong>Location:</strong>
+        <select id="locations" class="min-w-[200px] block w-full rounded-md border-gray-300 py-2 pl-3 pr-10 text-bas focus:outline-none sm:text-sm"></select>
+      </div>
+    </section>    
+  </header>
+  <main class="max-w-[970px] mx-auto">
+    
+    <section class="mb-10">
       <div>
+        <iframe src="./banner.html?code=NJ-1942770882" width="970" height="250"></iframe>
+        <code>970x250</code>
+      </div>
+
+      <div>
+        <iframe src="./banner.html?code=NJ-1942770882" width="970" height="90"></iframe>
+        <code>970x90</code>
+      </div>      
+
+      <div>
+        <iframe src="./banner.html?code=NJ-1942770882" width="728" height="90"></iframe>
+        <code>728x90</code>
+      </div>
+    </section>
+
+    <section class="grid grid-cols-3 gap-10">
+      <div class="col-span-2">
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam sit amet fermentum felis. Phasellus fermentum feugiat elit. Morbi scelerisque erat vel consectetur molestie. Quisque euismod vitae sapien eu tempor. Donec sed sem nunc. Vestibulum elit massa, auctor vitae ex ac, hendrerit bibendum nunc. Quisque placerat tellus neque, quis molestie mi cursus in. Maecenas in justo et dolor placerat fermentum. Morbi faucibus erat sed enim commodo luctus. Pellentesque a lectus id erat ultricies scelerisque.</p>
         <p>Nunc ut tincidunt tellus. Phasellus metus sem, consequat ac efficitur quis, egestas at tortor. Curabitur a pretium ipsum. Nulla ut nulla massa. Praesent nunc turpis, faucibus nec dolor id, venenatis tincidunt quam. Nulla vehicula sollicitudin lectus sit amet consequat. Etiam nec dolor purus. Suspendisse potenti. Nam vitae felis vitae tortor faucibus ultricies. Morbi in risus quis leo tempus molestie.</p>
         <p>Quisque faucibus mauris eu nisi tristique placerat in quis leo. Donec tristique, ex non aliquam pulvinar, nisi elit aliquam nulla, sed eleifend augue ligula vitae lacus. Cras eget orci metus. Cras quis neque odio. Nam et enim felis. Sed hendrerit rutrum ligula, nec fringilla urna efficitur vel. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Pellentesque vitae posuere diam. Sed rutrum justo quis pulvinar tincidunt. Nam ornare eros quis ligula venenatis, et tincidunt velit blandit. Curabitur eleifend, massa porttitor elementum dapibus, nisi turpis laoreet erat, sit amet laoreet leo leo sit amet mi. In erat mi, fringilla ut mattis nec, egestas suscipit libero.</p>
         <p>Morbi eu rutrum neque. Sed ut risus elit. Praesent nec justo nibh. Etiam efficitur feugiat turpis et interdum. Phasellus sed consequat ipsum. Donec feugiat tellus sed est eleifend auctor consequat egestas metus. Pellentesque sit amet arcu ipsum. Duis elementum congue diam, vel tincidunt mauris venenatis eget. Sed elementum magna id quam ornare aliquam.</p>
         <p>Nunc a turpis ac purus porta auctor eleifend a mi. Phasellus commodo a augue nec interdum. Proin nec nulla eget arcu suscipit posuere. Cras euismod ipsum porttitor dui rhoncus lacinia. Nulla elementum metus a mauris auctor semper. Donec viverra cursus mollis. Suspendisse hendrerit laoreet mauris, vitae ultricies sem aliquam id.</p>
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam sit amet fermentum felis. Phasellus fermentum feugiat elit. Morbi scelerisque erat vel consectetur molestie. Quisque euismod vitae sapien eu tempor. Donec sed sem nunc. Vestibulum elit massa, auctor vitae ex ac, hendrerit bibendum nunc. Quisque placerat tellus neque, quis molestie mi cursus in. Maecenas in justo et dolor placerat fermentum. Morbi faucibus erat sed enim commodo luctus. Pellentesque a lectus id erat ultricies scelerisque.</p>
-        <p>Nunc ut tincidunt tellus. Phasellus metus sem, consequat ac efficitur quis, egestas at tortor. Curabitur a pretium ipsum. Nulla ut nulla massa. Praesent nunc turpis, faucibus nec dolor id, venenatis tincidunt quam. Nulla vehicula sollicitudin lectus sit amet consequat. Etiam nec dolor purus. Suspendisse potenti. Nam vitae felis vitae tortor faucibus ultricies. Morbi in risus quis leo tempus molestie.</p>
-        <p>Quisque faucibus mauris eu nisi tristique placerat in quis leo. Donec tristique, ex non aliquam pulvinar, nisi elit aliquam nulla, sed eleifend augue ligula vitae lacus. Cras eget orci metus. Cras quis neque odio. Nam et enim felis. Sed hendrerit rutrum ligula, nec fringilla urna efficitur vel. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Pellentesque vitae posuere diam. Sed rutrum justo quis pulvinar tincidunt.</p>
+        <p>Quisque faucibus mauris eu nisi tristique placerat in quis leo. Donec tristique, ex non aliquam pulvinar, nisi elit aliquam nulla, sed eleifend augue ligula vitae lacus. Cras eget orci metus. Cras quis neque odio. Nam et enim felis. Sed hendrerit rutrum ligula, nec fringilla urna efficitur vel. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Pellentesque vitae posuere diam. Sed rutrum justo quis pulvinar tincidunt. Nam ornare eros quis ligula venenatis, et tincidunt velit blandit. Curabitur eleifend, massa porttitor elementum dapibus, nisi turpis laoreet erat, sit amet laoreet leo leo sit amet mi. In erat mi, fringilla ut mattis nec, egestas suscipit libero.</p>
+        <p>Morbi eu rutrum neque. Sed ut risus elit. Praesent nec justo nibh. Etiam efficitur feugiat turpis et interdum. Phasellus sed consequat ipsum. Donec feugiat tellus sed est eleifend auctor consequat egestas metus. Pellentesque sit amet arcu ipsum. Duis elementum congue diam, vel tincidunt mauris venenatis eget.</p>
       </div>
       <div>
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam sit amet fermentum felis. Phasellus fermentum feugiat elit. Morbi scelerisque erat vel consectetur molestie.</p>
-        <code>Demo Area 300x250</code>
-        <iframe src="./banner.html?state=NJ&gid=1942770882" width="300" height="250"></iframe>
+        <iframe src="./banner.html?code=NJ-1942770882" width="300" height="250"></iframe>
+        <code>300x250</code>
         
-        <p>Quisque euismod vitae sapien eu tempor. Donec sed sem nunc. Vestibulum elit massa, auctor vitae ex ac, hendrerit bibendum nunc. Quisque placerat tellus neque, quis molestie mi cursus in. Maecenas in justo et dolor placerat fermentum. Morbi faucibus erat sed enim commodo luctus. Pellentesque a lectus id erat ultricies scelerisque.</p>
-          <code>Demo Area 300x600</code>
-          <iframe src="./banner.html?state=NJ&gid=1942770882" width="300" height="600"></iframe>
+        <p>Quisque euismod vitae sapien eu tempor. Donec sed sem nunc. Vestibulum elit massa, auctor vitae ex ac, hendrerit bibendum nunc. Quisque placerat tellus neque, quis molestie mi cursus in. Maecenas in justo et dolor placerat fermentum.</p>
+        <iframe src="./banner.html?code=NJ-1942770882" width="300" height="600"></iframe>
+        <code>300x600</code>
       </div>
     </section>
-    <section class="grid">
+
+    <section class="grid grid-cols-3 gap-10">
       <div>
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam sit amet fermentum felis. Phasellus fermentum feugiat elit.</p>
-        <code>Demo Area 320x50</code>
-        <iframe src="./banner.html?state=NJ&gid=1942770882" width="320" height="50"></iframe>
+        <iframe src="./banner.html?code=NJ-1942770882" width="320" height="50"></iframe>
+        <code>320x50</code>
       </div>
       <div>
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam sit amet fermentum felis. Phasellus fermentum feugiat elit.</p>
-        <code>Demo Area 300x50</code>
-        <iframe src="./banner.html?state=NJ&gid=1942770882" width="300" height="50"></iframe>
+        <iframe src="./banner.html?code=NJ-1942770882" width="300" height="50"></iframe>
+        <code>300x50</code>
       </div>
       <div>
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam sit amet fermentum felis. Phasellus fermentum feugiat elit.</p>
-        <code>Demo Area 320x100</code>
-        <iframe src="./banner.html?state=NJ&gid=1942770882" width="320" height="100"></iframe>
+        <iframe src="./banner.html?code=NJ-1942770882" width="320" height="100"></iframe>
+        <code>320x100</code>
       </div>
     </section>
+
   </main>
+  <script>
+
+    const qs = new URLSearchParams(window.location.search);    
+    const code = qs.get('code');
+
+    let sheets = [
+      "https://sheets.googleapis.com/v4/spreadsheets/19mTCJ1Gip7p3rAnGKa190xmY8Y1DTf4ERfzrMJhrnEI/",
+      "https://sheets.googleapis.com/v4/spreadsheets/15pxZRD07RJuqbHC-pXHdmvc0hhXFwsjbaqodIYjm984",
+      "https://sheets.googleapis.com/v4/spreadsheets/1ZTF-UJtDChbjxbwlpBAhXLRo0NrVotxQvcvzoeYSd8Q"
+    ];
+
+    Promise.all(sheets.map(s=>fetch(s+'?key=AIzaSyDhKPxW_Vil5LWN5MxukzoddpnzUsX8IOc'))).then(responses =>
+        Promise.all(responses.map(res => res.json()))
+    ).then(items => {
+      let options = []
+
+      for(i in items) {
+        let state = items[i].properties.title.split(' ')[1]
+        options.push(
+          `<optgroup label="${items[i].properties.title}">
+          ${items[i].sheets.map(tab => `
+            <option
+              value="${state + '-' + tab.properties.sheetId}"
+              ${state + '-' + tab.properties.sheetId === code ? 'selected' : ''}
+            >
+            ${tab.properties.title}
+            </option>
+          `).join("\n")}
+            <option value="saab">Saab</option>
+          </optgroup>`
+        )
+      }
+
+      locations.innerHTML = options.join('\n')
+
+    })
+    .catch((err) => {
+      console.log(err)
+    });
+
+    document.getElementById("locations").onchange = function() {
+      window.location.href = "/?code=" + this.value;
+    }
+
+    addEventListener('DOMContentLoaded', (event) => {
+      if(code) {
+        let iframes = document.querySelectorAll('iframe')
+        iframes.forEach(iframe => iframe.src = "./banner.html?code=" + code);
+      }
+    })
+
+
+  </script>
 </body>
 </html>

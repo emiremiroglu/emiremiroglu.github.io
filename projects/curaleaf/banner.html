@@ -118,6 +118,7 @@
       bottom: 0;
       height: 100%;
       z-index: 999;
+      width: 20px;
     }
 
     .button-next {
@@ -129,6 +130,7 @@
       right: 0;
       bottom: 0;
       z-index: 999;
+      width: 20px;
     }
 
     .swiper-button-next,
@@ -137,7 +139,6 @@
       margin-top: 0;
       top: 0;
       background-color: var(--color-light);
-      border-radius: 4px;
     }
 
     .swiper-button-next::after,
@@ -328,7 +329,6 @@
             "name": "Edgewater Park",
             "url": "https://curaleaf.com/shop/new-jersey/curaleaf-nj-edgewater-park-adult-use?utm_source=Hearst&utm_medium=display&utm_campaign=NJ+EdgewaterPark20230901Dynamic+Product"
           },
-
           "FL-0": {
             "name": "Boca Raton Glades",
             "url": "https://curaleaf.com/shop/florida/curaleaf-boca-raton-glades?utm_source=Hearst&utm_medium=display&utm_campaign=FL+BocaRatonGlades+20230901Dynamic+Product"
@@ -389,16 +389,16 @@
 
         const qs = new URLSearchParams(window.location.search);
         
-        const state = qs.get('state');
-        const gid = qs.get('gid');
-        const l = state + '-' + gid
+        const code = qs.get('code');
+        const state = code.split('-')[0];
+        const gid = code.split('-')[1];
 
         let sheet_id = null
         let box = document.querySelector('#box')
         let licenseText = document.querySelector('#licenseText')
         let locationText = document.querySelector('#locationText')
 
-        box.href = locations[l].url
+        box.href = locations[code].url
 
         switch(state) {
           case 'AZ':
