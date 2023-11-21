@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://unpkg.com/@tailwindcss/forms@0.2.1/dist/forms.min.css" rel="stylesheet">
+  <script type="text/javascript" src="https://creative.stackadapt.com/js/iframe-ct.js"></script>
   <title>Curaleaf</title>
   <style>
     p {
@@ -114,7 +115,7 @@
     ];
 
     Promise.all(sheets.map(s=>fetch(s+'?key=AIzaSyDhKPxW_Vil5LWN5MxukzoddpnzUsX8IOc'))).then(responses =>
-        Promise.all(responses.map(res => res.json()))
+      Promise.all(responses.map(res => res.json()))
     ).then(items => {
       let options = []
 
@@ -122,11 +123,8 @@
         let state = items[i].properties.title.split(' ')[1]
         options.push(
           `<optgroup label="${items[i].properties.title}">
-          ${items[i].sheets.map(tab => `
-            <option
-              value="${state + '-' + tab.properties.sheetId}"
-              ${state + '-' + tab.properties.sheetId === code ? 'selected' : ''}
-            >
+            ${items[i].sheets.map(tab => `
+              <option value="${state + '-' + tab.properties.sheetId}" ${state + '-' + tab.properties.sheetId === code ? 'selected' : ''}>
             ${tab.properties.title}
             </option>
           `).join("\n")}
@@ -144,15 +142,6 @@
     document.getElementById("locations").onchange = function() {
       window.location.href = "?code=" + this.value;
     }
-
-    addEventListener('DOMContentLoaded', (event) => {
-      if(code) {
-        let iframes = document.querySelectorAll('iframe')
-        iframes.forEach(iframe => iframe.src = "./banner.html?code=" + code);
-      }
-    })
-
-
   </script>
 </body>
 </html>
