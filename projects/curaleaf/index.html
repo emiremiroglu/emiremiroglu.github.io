@@ -47,17 +47,17 @@
     
     <section class="mb-10">
       <div>
-        <iframe src="./banner.html?code=NJ-1942770882" width="970" height="250"></iframe>
+        <iframe src="./banner.html?code=AZ-1631058255" width="970" height="250"></iframe>
         <code>970x250</code>
       </div>
 
       <div>
-        <iframe src="./banner.html?code=NJ-1942770882" width="970" height="90"></iframe>
+        <iframe src="./banner.html?code=AZ-1631058255" width="970" height="90"></iframe>
         <code>970x90</code>
       </div>      
 
       <div>
-        <iframe src="./banner.html?code=NJ-1942770882" width="728" height="90"></iframe>
+        <iframe src="./banner.html?code=AZ-1631058255" width="728" height="90"></iframe>
         <code>728x90</code>
       </div>
     </section>
@@ -75,11 +75,11 @@
       </div>
       <div>
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam sit amet fermentum felis. Phasellus fermentum feugiat elit. Morbi scelerisque erat vel consectetur molestie.</p>
-        <iframe src="./banner.html?code=NJ-1942770882" width="300" height="250"></iframe>
+        <iframe src="./banner.html?code=AZ-1631058255" width="300" height="250"></iframe>
         <code>300x250</code>
         
         <p>Quisque euismod vitae sapien eu tempor. Donec sed sem nunc. Vestibulum elit massa, auctor vitae ex ac, hendrerit bibendum nunc. Quisque placerat tellus neque, quis molestie mi cursus in. Maecenas in justo et dolor placerat fermentum.</p>
-        <iframe src="./banner.html?code=NJ-1942770882" width="300" height="600"></iframe>
+        <iframe src="./banner.html?code=AZ-1631058255" width="300" height="600"></iframe>
         <code>300x600</code>
       </div>
     </section>
@@ -87,17 +87,17 @@
     <section class="grid grid-cols-3 gap-10">
       <div>
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam sit amet fermentum felis. Phasellus fermentum feugiat elit.</p>
-        <iframe src="./banner.html?code=NJ-1942770882" width="320" height="50"></iframe>
+        <iframe src="./banner.html?code=AZ-1631058255" width="320" height="50"></iframe>
         <code>320x50</code>
       </div>
       <div>
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam sit amet fermentum felis. Phasellus fermentum feugiat elit.</p>
-        <iframe src="./banner.html?code=NJ-1942770882" width="300" height="50"></iframe>
+        <iframe src="./banner.html?code=AZ-1631058255" width="300" height="50"></iframe>
         <code>300x50</code>
       </div>
       <div>
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam sit amet fermentum felis. Phasellus fermentum feugiat elit.</p>
-        <iframe src="./banner.html?code=NJ-1942770882" width="320" height="100"></iframe>
+        <iframe src="./banner.html?code=AZ-1631058255" width="320" height="100"></iframe>
         <code>320x100</code>
       </div>
     </section>
@@ -108,39 +108,51 @@
     const qs = new URLSearchParams(window.location.search);    
     const code = qs.get('code');
 
-    let sheets = [
-      "https://sheets.googleapis.com/v4/spreadsheets/19mTCJ1Gip7p3rAnGKa190xmY8Y1DTf4ERfzrMJhrnEI/",
-      "https://sheets.googleapis.com/v4/spreadsheets/15pxZRD07RJuqbHC-pXHdmvc0hhXFwsjbaqodIYjm984",
-      "https://sheets.googleapis.com/v4/spreadsheets/1ZTF-UJtDChbjxbwlpBAhXLRo0NrVotxQvcvzoeYSd8Q"
-    ];
-
-    Promise.all(sheets.map(s=>fetch(s+'?key=AIzaSyDhKPxW_Vil5LWN5MxukzoddpnzUsX8IOc'))).then(responses =>
-      Promise.all(responses.map(res => res.json()))
-    ).then(items => {
-      let options = []
-
-      for(i in items) {
-        let state = items[i].properties.title.split(' ')[1]
-        options.push(
-          `<optgroup label="${items[i].properties.title}">
-            ${items[i].sheets.map(tab => `
-              <option value="${state + '-' + tab.properties.sheetId}" ${state + '-' + tab.properties.sheetId === code ? 'selected' : ''}>
-            ${tab.properties.title}
-            </option>
-          `).join("\n")}
-          </optgroup>`
-        )
+    addEventListener('DOMContentLoaded', (event) => {
+      
+      // Apply location code to all iframes
+      const iframes = document.querySelectorAll('iframe')
+      for(i in iframes) {
+        iframes[i].src = './banner.html?code=' + code
       }
 
-      locations.innerHTML = options.join('\n')
+      // Connect to Google Sheets to generate location codes
+      let sheets = [
+        'https://sheets.googleapis.com/v4/spreadsheets/19mTCJ1Gip7p3rAnGKa190xmY8Y1DTf4ERfzrMJhrnEI',
+        'https://sheets.googleapis.com/v4/spreadsheets/15pxZRD07RJuqbHC-pXHdmvc0hhXFwsjbaqodIYjm984',
+        'https://sheets.googleapis.com/v4/spreadsheets/1ZTF-UJtDChbjxbwlpBAhXLRo0NrVotxQvcvzoeYSd8Q'
+      ];
 
+      Promise.all(sheets.map(s=>fetch(s+'?key=AIzaSyDhKPxW_Vil5LWN5MxukzoddpnzUsX8IOc'))).then(responses =>
+        Promise.all(responses.map(res => res.json()))
+      ).then(items => {
+        let options = []
+
+        for(i in items) {
+          let state = items[i].properties.title.split(' ')[1]
+          options.push(
+            `<optgroup label="${items[i].properties.title}">
+              ${items[i].sheets.map(tab => `
+                <option value="${state + '-' + tab.properties.sheetId}" ${state + '-' + tab.properties.sheetId === code ? 'selected' : ''}>
+              ${tab.properties.title}
+              </option>
+            `).join("\n")}
+            </optgroup>`
+          )
+        }
+        
+        // Inject location codes
+        locations.innerHTML = options.join('\n')
+
+      })
+      .catch((err) => {
+        console.log(err)
+      });
     })
-    .catch((err) => {
-      console.log(err)
-    });
 
-    document.getElementById("locations").onchange = function() {
-      window.location.href = "?code=" + this.value;
+    // Change the page url to update banners
+    document.getElementById('locations').onchange = function() {
+      window.location.href = '?code=' + this.value;
     }
   </script>
 </body>
