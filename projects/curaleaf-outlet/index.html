@@ -17,6 +17,7 @@
       display: inline-block;
       margin-bottom: 5px;
       font-size: 0.6em;
+      opacity: 0.3;
     }
 
     iframe {
@@ -30,15 +31,15 @@
     }
   </style>
 </head>
-<body class="py-32">
-  <header class="fixed top-0 left-0 right-0 py-5 w-full bg-gray-50">
+<body class="py-32 dark:text-zinc-100 dark:bg-zinc-900">
+  <header class="fixed top-0 left-0 right-0 py-5 w-full bg-gray-50 dark:bg-zinc-800">
     <section class="flex justify-between items-center max-w-[970px] mx-auto">
       <strong>
         Curaleaf Ad Preview: Outlet
       </strong>
       <div class="flex items-center gap-3">
         <strong>Location:</strong>
-        <select id="locations" class="min-w-[200px] block w-full rounded-md border-gray-300 py-2 pl-3 pr-10 text-bas focus:outline-none sm:text-sm">
+        <select id="locations" class="min-w-[200px] block w-full rounded-md border-gray-300 py-2 pl-3 pr-10 text-bas focus:outline-none sm:text-sm text-zinc-900">
           <option value="worth">Worth</option>
           <option value="justice">Justice</option>
           <option value="melrose">Melrose</option>
