@@ -107,7 +107,7 @@
   <body>
     <main id="banner">
       <section>
-        <a id="link" target="_blank">
+        <a id="link" target="_blank" href="https://curaleaf.com">
           <div class="logo">
             <svg viewBox="0 0 69 24" xmlns="http://www.w3.org/2000/svg">
               <path
@@ -168,46 +168,41 @@
               <path d="M9.875 1L13 4.125M13 4.125L9.875 7.25M13 4.125H1" stroke="var(--color-foreground)"
                 stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
             </svg>
-            Shop <span id="location_node"></span>
+            Shop <span id="location_node">Illinois</span>
           </span>
         </a>
       </section>
     </main>
     <script>
       (function () {
-        const qs = new URLSearchParams(window.location.search);
-        const location = qs.get('location');
-
-        let locations = {
-          "worth": {
-            "title": "Worth",
-            "cta": "Worth, IL",
-            "url": "https://curaleaf.com/shop/illinois/curaleaf-il-worth/specials/642b215aee43090087fedf39"
-          },
-          "justice": {
-            "title": "Justice",
-            "cta": "Justice, IL",
-            "url": "https://curaleaf.com/shop/illinois/curaleaf-il-justice/specials/642b21e6c2b7810066e4d999"
-          },
-          "melrose": {
-            "title": "Melrose",
-            "cta": "Melrose, IL",
-            "url": "https://curaleaf.com/shop/illinois/curaleaf-il-melrose-park/specials/642b120504f169007439fd60"
-          },
-          "no_location": {
-            "title": "Illinois",
-            "cta": "Illinois",
-            "url": "https://curaleaf.com/locations"
-          }
-        }
-
         addEventListener('DOMContentLoaded', (event) => {
-          
+
+          let locations = {
+            "worth": {
+              "title": "Worth",
+              "cta": "Worth, IL",
+              "url": "https://curaleaf.com/shop/illinois/curaleaf-il-worth/specials/642b215aee43090087fedf39"
+            },
+            "justice": {
+              "title": "Justice",
+              "cta": "Justice, IL",
+              "url": "https://curaleaf.com/shop/illinois/curaleaf-il-justice/specials/642b21e6c2b7810066e4d999"
+            },
+            "melrose": {
+              "title": "Melrose",
+              "cta": "Melrose, IL",
+              "url": "https://curaleaf.com/shop/illinois/curaleaf-il-melrose-park/specials/642b120504f169007439fd60"
+            }
+          }
+
           let banner = document.querySelector('#banner')
           let location_node = document.querySelector('#location_node')
           let link = document.querySelector('#link')
 
-          location_node.innerHTML = locations[location].cta || 'Shop Illinois'
+          const qs = new URLSearchParams(window.location.search);
+          const location = qs.get('location');
+
+          location_node.innerHTML = locations[location].cta
           link.setAttribute('href', locations[location].url)
 
         });
