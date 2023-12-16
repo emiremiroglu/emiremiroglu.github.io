@@ -218,9 +218,9 @@
         function showNextQuote() {
           ++quoteIndex;
           quotes.eq(quoteIndex % quotes.length)
-            .fadeIn(100)
-            .delay(800)
-            .fadeOut(100, showNextQuote);
+            .fadeIn(250)
+            .delay(1000)
+            .fadeOut(250, showNextQuote);
         }
 
         showNextQuote();
