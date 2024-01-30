@@ -120,7 +120,9 @@
       let sheets = [
         'https://sheets.googleapis.com/v4/spreadsheets/19mTCJ1Gip7p3rAnGKa190xmY8Y1DTf4ERfzrMJhrnEI',
         'https://sheets.googleapis.com/v4/spreadsheets/15pxZRD07RJuqbHC-pXHdmvc0hhXFwsjbaqodIYjm984',
-        'https://sheets.googleapis.com/v4/spreadsheets/1ZTF-UJtDChbjxbwlpBAhXLRo0NrVotxQvcvzoeYSd8Q'
+        'https://sheets.googleapis.com/v4/spreadsheets/1ZTF-UJtDChbjxbwlpBAhXLRo0NrVotxQvcvzoeYSd8Q',
+        'https://sheets.googleapis.com/v4/spreadsheets/1R8RAyKcN8BMRVab3Km4UFY8NsxANxNNeKMD6vFthENA',
+        'https://sheets.googleapis.com/v4/spreadsheets/1nBi85ECOI1iwlDcDVczNtb5MzaqJP9KfWOO_BWLtfRY'
       ];
 
       Promise.all(sheets.map(s=>fetch(s+'?key=AIzaSyDhKPxW_Vil5LWN5MxukzoddpnzUsX8IOc'))).then(responses =>

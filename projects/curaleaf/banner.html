@@ -80,6 +80,7 @@
     .box .code {
       font-size: 6px;
       text-align: center;
+
     }
 
     .swiper {
@@ -427,7 +428,33 @@
           "FL-2075796088": {
             "name": "Sarasota",
             "url": "https://curaleaf.com/shop/florida/curaleaf-dispensary-sarasota?utm_source=Hearst&utm_medium=display&utm_campaign=FL+Sarasota+20230901Dynamic+Product"
+          },
+
+          "NV-0": {
+            "name": "Las Vegas",
+            "url": "https://curaleaf.com/shop/nevada/curaleaf-nv-las-vegas?utm_source=Hearst&utm_medium=display&utm_campaign=NV+Las+Vegas+Dynamic+Product"
+          },
+
+          "NV-299521552": {
+            "name": "Las Vegas Strip",
+            "url": "https://reefdispensaries.com/locations/las-vegas/order-now?utm_source=Hearst&utm_medium=display&utm_campaign=NV+Las+Vegas+Strip+Dynamic+Product"
+          },
+
+          "IL-0": {
+            "name": "Worth",
+            "url": "https://curaleaf.com/shop/illinois/curaleaf-il-worth"
+          },
+
+          "IL-1124825085": {
+            "name": "New Lenox",
+            "url": "https://curaleaf.com/shop/illinois/curaleaf-il-new-lenox"
+          },
+
+          "IL-1869477012": {
+            "name": "Weed Street",
+            "url": "https://curaleaf.com/shop/illinois/curaleaf-il-weed-street"
           }
+
         }
 
         const qs = new URLSearchParams(window.location.search);
@@ -461,9 +488,22 @@
             box.style.backgroundImage = "url('https://dlyyrzii9sh86.cloudfront.net/curaleaf-dco/assets/bg-florida.jpg')";
             licenseText.innerHTML = 'MMTC-2015-0001'
           break;
+          case 'NV':
+            sheet_id = '1R8RAyKcN8BMRVab3Km4UFY8NsxANxNNeKMD6vFthENA'
+            box.style.backgroundImage = "url('/assets/bg-nevada.jpg')";
+            licenseText.innerHTML = 'Keep out of reach of children. For use only by adults 21 years of age and older. CURALEAF RD011'
+          break;
+          case 'IL':
+            sheet_id = '1nBi85ECOI1iwlDcDVczNtb5MzaqJP9KfWOO_BWLtfRY'
+            box.style.backgroundImage = "url('/assets/bg-illinois.jpg')";
+            licenseText.innerHTML = ''
+          break;
+          
         }
 
-        fetch('https://docs.google.com/spreadsheets/d/' + sheet_id + '/gviz/tq?gid='+ gid +'&tqx=reqId:1;out:csv').then((response) => {
+        let target = 'https://docs.google.com/spreadsheets/d/' + sheet_id + '/gviz/tq?gid='+ gid +'&tqx=reqId:1;out:csv'
+
+        fetch(target).then((response) => {
           if(response.ok) {
             return response.text();
           }
@@ -502,7 +542,7 @@
             navigation: {
               nextEl: ".swiper-button-next",
               prevEl: ".swiper-button-prev",
-            },
+            }
           });
 
         })
