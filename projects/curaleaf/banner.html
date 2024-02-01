@@ -51,7 +51,7 @@
       align-items: center;
       justify-content: center;
       flex-direction: column;
-      gap: 10px;
+      gap: 2px;
       background-color: var(--color-background);
       color: var(--color-light);
       background-repeat: no-repeat;
@@ -494,7 +494,6 @@
             <path d="M181.52 15.9C181.52 15.9 166.944 15.6831 165.558 29.5687C167.833 30.943 170.499 31.7356 173.35 31.7356C174.584 31.7356 175.781 31.5847 176.929 31.3043V20.2645C176.929 17.7388 178.995 15.9 181.52 15.9Z" fill="white"/>
             <path d="M172.632 1.82674C164.675 1.82674 158.202 8.30057 158.202 16.2582C158.202 24.2145 164.675 30.6879 172.632 30.6879C180.59 30.6879 187.064 24.2145 187.064 16.2582C187.064 8.30057 180.59 1.82674 172.632 1.82674ZM172.632 32C163.952 32 156.89 24.9377 156.89 16.2582C156.89 7.57699 163.952 0.514672 172.632 0.514672C181.314 0.514672 188.376 7.57699 188.376 16.2582C188.376 24.9377 181.314 32 172.632 32Z" fill="white"/>
           </svg>
-
           `
         } else {
           logoContainer.innerHTML = `
@@ -525,12 +524,12 @@
             break;
           case 'NV':
             sheet_id = '1R8RAyKcN8BMRVab3Km4UFY8NsxANxNNeKMD6vFthENA'
-            box.style.backgroundImage = "url('./assets/bg-nevada.jpg')";
+            box.style.backgroundImage = "url('https://dlyyrzii9sh86.cloudfront.net/curaleaf-dco/assets/bg-nevada.jpg')";
             licenseText.innerHTML = 'Keep out of reach of children. For use only by adults 21 years of age and older. CURALEAF RD011'
             break;
           case 'IL':
             sheet_id = '1nBi85ECOI1iwlDcDVczNtb5MzaqJP9KfWOO_BWLtfRY'
-            box.style.backgroundImage = "url('./assets/bg-illinois.jpg')";
+            box.style.backgroundImage = "url('https://dlyyrzii9sh86.cloudfront.net/curaleaf-dco/assets/bg-illinois.jpg')";
             licenseText.innerHTML = ''
             break;
         }
@@ -583,7 +582,6 @@
           .catch((error) => {
             console.log(error)
           });
-
       });
     })();
   </script>
